@@ -4,10 +4,11 @@ import 'package:quiz_app/controllers/question_controller.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
+import '../../../controllers/questions_controller.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({
-    Key key,
+    required Key key,
   }) : super(key: key);
 
   @override
