@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:startup_namer/screens/quiz/components/body.dart';
 
 import '../../controllers/questions_controller.dart';

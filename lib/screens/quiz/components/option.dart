@@ -5,11 +5,10 @@ import '../../../controllers/questions_controller.dart';
 
 class Option extends StatelessWidget {
   const Option({
-    required Key key,
     required this.text,
     required this.index,
     required this.press,
-  }) : super(key: key);
+  });
   final String text;
   final int index;
   final VoidCallback press;

@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz_app/constants.dart';
-import 'package:quiz_app/controllers/question_controller.dart';
-import 'package:quiz_app/models/Questions.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
 import '../../../controllers/questions_controller.dart';
-import 'progress_bar.dart';
+import 'package:startup_namer/screens/quiz/components/progress_bar.dart';
 import 'question_card.dart';
 
 class Body extends StatelessWidget {
-  const Body({
-    required Key key,
-  }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     // So that we have acccess our controller
-    QuestionController _questionController = Get.put(QuestionController());
+    QuestionController questionController = Get.put(QuestionController());
     return Stack(
       children: [
         SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
@@ -26,9 +21,9 @@ class Body extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
+               Padding(
                 padding:
-                EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: ProgressBar(),
               ),
               const SizedBox(height: kDefaultPadding),
@@ -39,18 +34,18 @@ class Body extends StatelessWidget {
                       () => Text.rich(
                     TextSpan(
                       text:
-                      "Question ${_questionController.questionNumber.value}",
+                      "Question ${questionController.questionNumber.value}",
                       style: Theme.of(context)
                           .textTheme
                           .headline4
                           ?.copyWith(color: kSecondaryColor),
                       children: [
                         TextSpan(
-                          text: "/${_questionController.questions.length}",
+                          text: "/${questionController.questions.length}",
                           style: Theme.of(context)
                               .textTheme
                               .headline5
-                              .copyWith(color: kSecondaryColor),
+                              ?.copyWith(color: kSecondaryColor),
                         ),
                       ],
                     ),
@@ -63,11 +58,11 @@ class Body extends StatelessWidget {
                 child: PageView.builder(
                   // Block swipe to next qn
                   physics: const NeverScrollableScrollPhysics(),
-                  controller: _questionController.pageController,
-                  onPageChanged: _questionController.updateTheQnNum,
-                  itemCount: _questionController.questions.length,
+                  controller: questionController.pageController,
+                  onPageChanged: questionController.updateTheQnNum,
+                  itemCount: questionController.questions.length,
                   itemBuilder: (context, index) => QuestionCard(
-                      question: _questionController.questions[index]),
+                      question: questionController.questions[index]),
                 ),
               ),
             ],
