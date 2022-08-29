@@ -7,9 +7,12 @@ import 'package:startup_namer/screens/quiz/components/option.dart/';
 import 'package:startup_namer/controllers/questions_controller.dart';
 
 class QuestionCard extends StatelessWidget {
+  const QuestionCard({
+      // it means we have to pass this
+    required this.question,
+  });
 
-
-  late final Question question;
+  final Question question;
 
   @override
   Widget build(BuildContext context) {
